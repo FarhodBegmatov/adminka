@@ -15,8 +15,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/politics', function () {
+    return view('pages.politics');
+});
+
+Route::get('/sport', function () {
+    return view('pages.sport');
+});
+
+Route::get('/technologies', function () {
+    return view('pages.technologies');
+});
+
+Route::get('/world-news', function () {
+    return view('pages.world-news');
+});
+
+Route::get('/uzb-news', function () {
+    return view('pages.uzb-news');
+});
+
+Route::get('/blog', function () {
+    return view('pages.blog');
+});
+
+Route::get('/about', function () {
+    return view('pages.about');
+});
+
+Route::get('/contact', function () {
+    return view('pages.contact');
+});
+
 
 
 Auth::routes();
