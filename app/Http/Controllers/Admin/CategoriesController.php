@@ -26,24 +26,26 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
+        $data = $request->validate([
+            'tip_id' => 'required|string|max:255',
+            'category_name' => 'required|string|max:255',
         ]);
 
 
-        if (!$request) {
+        if (!$data) {
             return redirect()->route('admin.categories.create')
                 ->withErrors($request)
                 ->withInput();
         }
 
         $category = new Category();
-        $category->name = $request->input('name');
+        $category->tip_id = $request->input('tip_id');
+        $category->category_name = $request->input('category_name');
         $saved = $category->save();
         if ($saved){
-            return redirect()->route('admin.categories.index')->with('success', 'The group is added successfully!');
+            return redirect()->route('admin.categories.index')->with('success', 'The category is added successfully!');
         }
-        return redirect()->route('admin.categories.create')->with('danger', 'The group is not added!');
+        return redirect()->route('admin.categories.create')->with('danger', 'The category is not added!');
     }
 
     public function edit(Category $category)
